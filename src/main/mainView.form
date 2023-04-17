@@ -124,10 +124,9 @@
           <StringArray count="3">
             <StringItem index="0" value="Homogenea"/>
             <StringItem index="1" value="Natural"/>
-            <StringItem index="2" value="Externa"/>
+            <StringItem index="2" value="Directa"/>
           </StringArray>
         </Property>
-        <Property name="selectedIndex" type="int" value="-1"/>
         <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new PromptComboBoxRenderer(&quot;Default&quot;)" type="code"/>
         </Property>

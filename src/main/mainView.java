@@ -4,6 +4,9 @@
  */
 package main;
 
+import sorting.MezclaD;
+import java.io.*;
+
 /**
  *
  * @author Alexandra
@@ -59,8 +62,7 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        ordenamientoList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homogenea", "Natural", "Externa" }));
-        ordenamientoList.setSelectedIndex(-1);
+        ordenamientoList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homogenea", "Natural", "Directa" }));
         ordenamientoList.setRenderer(new PromptComboBoxRenderer("Default"));
         ordenamientoList.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -136,16 +138,17 @@ public class mainView extends javax.swing.JFrame {
 
     private void idiomaListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_idiomaListItemStateChanged
         idioma = (String) idiomaList.getSelectedItem();
-        switch(idioma) {
+        switch (idioma) {
             case "Español":
-                file = "cc.es.300.vec";
+                file = new File("src/resources/dummyFile1.txt").getAbsolutePath();
                 break;
             case "Ingles":
-                file = "cc.en.300.vec";
+                file = new File("src/resources/dummyFile2.txt").getAbsolutePath();
                 break;
             case "Italiano":
-                file = "cc.it.300.vec";
+                file = new File("src/resources/dummyFile3.txt").getAbsolutePath();
             default:
+                System.out.println("No valid language");
                 break;
         }
         System.out.println("idioma: " + idioma);
@@ -154,14 +157,21 @@ public class mainView extends javax.swing.JFrame {
 
     private void ordenamientoListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ordenamientoListItemStateChanged
         ord = (String) ordenamientoList.getSelectedItem();
-        
+        switch (ord) {
+            case "Directa":
+                mezcla = new MezclaD();
+                break;
+            default:
+                System.out.println("No valid sorting");
+                break;
+        }
         System.out.println("ordenamiento: " + ord);
         ordenamientoBtn.setEnabled(true);
     }//GEN-LAST:event_ordenamientoListItemStateChanged
 
     private void ordenamientoBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordenamientoBtnMousePressed
         pane.showMessageDialog(this, "click");
-        
+        mezcla.MezclaDirecta(file);
         sumaBtn.setEnabled(true);
     }//GEN-LAST:event_ordenamientoBtnMousePressed
 
@@ -219,5 +229,6 @@ public class mainView extends javax.swing.JFrame {
     private String idioma = "";
     private String ord = "";
     private javax.swing.JOptionPane pane;
-    private String file = "";
+    private String file;
+    private MezclaD mezcla;
 }
