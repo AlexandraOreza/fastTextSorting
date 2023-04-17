@@ -143,6 +143,8 @@ public class mainView extends javax.swing.JFrame {
             case "Ingles":
                 file = "cc.en.300.vec";
                 break;
+            case "Italiano":
+                file = "cc.it.300.vec";
             default:
                 break;
         }
