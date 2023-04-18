@@ -4,7 +4,7 @@
  */
 package main;
 
-import sorting.MezclaD;
+import sorting.MezclaN;
 import java.io.*;
 
 /**
@@ -140,8 +140,8 @@ public class mainView extends javax.swing.JFrame {
 
     private void ordenamientoBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordenamientoBtnMousePressed
         pane.showMessageDialog(this, "click");
-        mezcla = new MezclaD();
-        mezcla.MezclaDirecta(file);
+        mezcla = new MezclaN();
+        mezcla.MezclaNatural(file);
         sumaBtn.setEnabled(true);
     }//GEN-LAST:event_ordenamientoBtnMousePressed
 
@@ -197,5 +197,5 @@ public class mainView extends javax.swing.JFrame {
     private String idioma = "";
     private javax.swing.JOptionPane pane;
     private String file;
-    private MezclaD mezcla;
+    private MezclaN mezcla;
 }
