@@ -21,7 +21,6 @@ public class mainView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         sumaBtn.setEnabled(false);
         ordenamientoBtn.setEnabled(false);
-        ordenamientoList.setEnabled(false);
     }
 
     /**
@@ -35,9 +34,7 @@ public class mainView extends javax.swing.JFrame {
 
         ordenamientoTitle = new javax.swing.JLabel();
         idiomaLbl = new javax.swing.JLabel();
-        ordenamientoLbl = new javax.swing.JLabel();
         idiomaList = new javax.swing.JComboBox<>();
-        ordenamientoList = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         sumaTitle = new javax.swing.JLabel();
         sumaBtn = new javax.swing.JButton();
@@ -51,22 +48,12 @@ public class mainView extends javax.swing.JFrame {
 
         idiomaLbl.setText("Selecciona un idioma:");
 
-        ordenamientoLbl.setText("Selecciona un ordenamiento:");
-
         idiomaList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles", "Item 3", "Item 4" }));
         idiomaList.setSelectedIndex(-1);
         idiomaList.setRenderer(new PromptComboBoxRenderer("Default"));
         idiomaList.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 idiomaListItemStateChanged(evt);
-            }
-        });
-
-        ordenamientoList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homogenea", "Natural", "Directa" }));
-        ordenamientoList.setRenderer(new PromptComboBoxRenderer("Default"));
-        ordenamientoList.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ordenamientoListItemStateChanged(evt);
             }
         });
 
@@ -101,12 +88,8 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(ordenamientoBtn)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(idiomaLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(idiomaList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ordenamientoLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addComponent(ordenamientoList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(idiomaList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,19 +101,15 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idiomaLbl)
                     .addComponent(idiomaList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ordenamientoLbl)
-                    .addComponent(ordenamientoList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(ordenamientoBtn)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(sumaTitle)
                 .addGap(18, 18, 18)
                 .addComponent(sumaBtn)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,30 +126,21 @@ public class mainView extends javax.swing.JFrame {
                 break;
             case "Italiano":
                 file = new File("src/resources/dummyFile3.txt").getAbsolutePath();
+                break;
+            case "French":
+                file = new File("src/resources/dummyFile3.txt").getAbsolutePath();
             default:
                 System.out.println("No valid language");
                 break;
         }
         System.out.println("idioma: " + idioma);
-        ordenamientoList.setEnabled(true);
-    }//GEN-LAST:event_idiomaListItemStateChanged
-
-    private void ordenamientoListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ordenamientoListItemStateChanged
-        ord = (String) ordenamientoList.getSelectedItem();
-        switch (ord) {
-            case "Directa":
-                mezcla = new MezclaD();
-                break;
-            default:
-                System.out.println("No valid sorting");
-                break;
-        }
-        System.out.println("ordenamiento: " + ord);
         ordenamientoBtn.setEnabled(true);
-    }//GEN-LAST:event_ordenamientoListItemStateChanged
+
+    }//GEN-LAST:event_idiomaListItemStateChanged
 
     private void ordenamientoBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordenamientoBtnMousePressed
         pane.showMessageDialog(this, "click");
+        mezcla = new MezclaD();
         mezcla.MezclaDirecta(file);
         sumaBtn.setEnabled(true);
     }//GEN-LAST:event_ordenamientoBtnMousePressed
@@ -220,14 +190,11 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> idiomaList;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton ordenamientoBtn;
-    private javax.swing.JLabel ordenamientoLbl;
-    private javax.swing.JComboBox<String> ordenamientoList;
     private javax.swing.JLabel ordenamientoTitle;
     private javax.swing.JButton sumaBtn;
     private javax.swing.JLabel sumaTitle;
     // End of variables declaration//GEN-END:variables
     private String idioma = "";
-    private String ord = "";
     private javax.swing.JOptionPane pane;
     private String file;
     private MezclaD mezcla;
