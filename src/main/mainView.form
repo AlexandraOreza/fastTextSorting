@@ -27,15 +27,30 @@
           <Group type="102" attributes="0">
               <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="ordenamientoTitle" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jSeparator1" alignment="2" max="32767" attributes="0"/>
-                  <Component id="sumaTitle" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="sumaBtn" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="ordenamientoBtn" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="2" attributes="0">
                       <Component id="idiomaLbl" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="83" max="32767" attributes="0"/>
                       <Component id="idiomaList" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="sumaBtn" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="similitudBtn" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="ordenamientoTitle" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="sumaTitle" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="ordenamientoBtn" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -52,14 +67,17 @@
                   <Component id="idiomaLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="idiomaList" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="ordenamientoBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="ordenamientoBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="sumaTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="sumaBtn" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="sumaBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="similitudBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -82,11 +100,8 @@
     <Component class="javax.swing.JComboBox" name="idiomaList">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="1">
             <StringItem index="0" value="Espa&#xf1;ol"/>
-            <StringItem index="1" value="Ingles"/>
-            <StringItem index="2" value="Italiano"/>
-            <StringItem index="3" value="Frances"/>
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -110,7 +125,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Suma vectorial"/>
+        <Property name="text" type="java.lang.String" value="Suma vectorial &amp; Similitud de cosenos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="sumaBtn">
@@ -127,6 +142,14 @@
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ordenamientoBtnMousePressed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="similitudBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Similitud"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="similitudBtnMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

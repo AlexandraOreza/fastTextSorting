@@ -4,8 +4,9 @@
  */
 package main;
 
-import sorting.MezclaEquilibrada;
+import logic.MezclaEquilibrada;
 import java.io.*;
+import main.sumaView;
 
 /**
  *
@@ -21,6 +22,7 @@ public class mainView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         sumaBtn.setEnabled(false);
         ordenamientoBtn.setEnabled(false);
+        similitudBtn.setEnabled(false);
     }
 
     /**
@@ -39,6 +41,7 @@ public class mainView extends javax.swing.JFrame {
         sumaTitle = new javax.swing.JLabel();
         sumaBtn = new javax.swing.JButton();
         ordenamientoBtn = new javax.swing.JButton();
+        similitudBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -48,7 +51,7 @@ public class mainView extends javax.swing.JFrame {
 
         idiomaLbl.setText("Selecciona un idioma:");
 
-        idiomaList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles", "Italiano", "Frances" }));
+        idiomaList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español" }));
         idiomaList.setSelectedIndex(-1);
         idiomaList.setRenderer(new PromptComboBoxRenderer("Default"));
         idiomaList.addItemListener(new java.awt.event.ItemListener() {
@@ -58,7 +61,7 @@ public class mainView extends javax.swing.JFrame {
         });
 
         sumaTitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        sumaTitle.setText("Suma vectorial");
+        sumaTitle.setText("Suma vectorial & Similitud de cosenos");
 
         sumaBtn.setText("Sumar");
         sumaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,6 +77,13 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
+        similitudBtn.setText("Similitud");
+        similitudBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                similitudBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,15 +91,25 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(ordenamientoTitle)
                     .addComponent(jSeparator1)
-                    .addComponent(sumaTitle)
-                    .addComponent(sumaBtn)
-                    .addComponent(ordenamientoBtn)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(idiomaLbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                        .addComponent(idiomaList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(idiomaList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(47, 47, 47)
+                                    .addComponent(sumaBtn)
+                                    .addGap(33, 33, 33)
+                                    .addComponent(similitudBtn))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(60, 60, 60)
+                                    .addComponent(ordenamientoTitle)))
+                            .addComponent(sumaTitle)
+                            .addComponent(ordenamientoBtn))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,14 +121,16 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idiomaLbl)
                     .addComponent(idiomaList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(ordenamientoBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ordenamientoBtn)
+                .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(sumaTitle)
                 .addGap(18, 18, 18)
-                .addComponent(sumaBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sumaBtn)
+                    .addComponent(similitudBtn))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -117,23 +139,10 @@ public class mainView extends javax.swing.JFrame {
 
     private void idiomaListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_idiomaListItemStateChanged
         idioma = (String) idiomaList.getSelectedItem();
-        switch (idioma) {
-            case "Español":
-                file = new File("src/resources/copyEs.vec").getAbsolutePath();
-                break;
-            case "Ingles":
-                file = new File("src/resources/copyEn.txt").getAbsolutePath();
-                break;
-            case "Italiano":
-                file = new File("src/resources/copyIt.txt").getAbsolutePath();
-                break;
-            case "French":
-                file = new File("src/resources/dummyFile3.txt").getAbsolutePath();
-            default:
-                System.out.println("No valid language");
-                break;
-        }
+        file = new File("src/resources/copyEs.vec").getAbsolutePath();
+        
         System.out.println("idioma: " + idioma);
+        System.out.println("filepath: " + file);
         ordenamientoBtn.setEnabled(true);
 
     }//GEN-LAST:event_idiomaListItemStateChanged
@@ -141,13 +150,25 @@ public class mainView extends javax.swing.JFrame {
     private void ordenamientoBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordenamientoBtnMousePressed
         mezclaE = new MezclaEquilibrada();
         mezclaE.ordenamiento(file);
-        pane.showMessageDialog(this, "ordenamiento concluido!");
+        pane.showMessageDialog(this, "ordenamiento concluido! guardado en F2");
         sumaBtn.setEnabled(true);
     }//GEN-LAST:event_ordenamientoBtnMousePressed
 
     private void sumaBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sumaBtnMousePressed
-        pane.showMessageDialog(this, "click");
+        //sum = new SumaVect();
+        file = new File("src/resources/F2.txt").getAbsolutePath();
+        sview = new sumaView();
+        sview.getData(file);
+        sview.setVisible(true);
+        //String res = sum.SumaVect(file);
+        
+        //pane.showMessageDialog(this, res);
+        similitudBtn.setEnabled(true);
     }//GEN-LAST:event_sumaBtnMousePressed
+
+    private void similitudBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_similitudBtnMouseClicked
+        pane.showMessageDialog(this, "click");
+    }//GEN-LAST:event_similitudBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -191,6 +212,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton ordenamientoBtn;
     private javax.swing.JLabel ordenamientoTitle;
+    private javax.swing.JButton similitudBtn;
     private javax.swing.JButton sumaBtn;
     private javax.swing.JLabel sumaTitle;
     // End of variables declaration//GEN-END:variables
@@ -198,4 +220,5 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JOptionPane pane;
     private String file;
     private MezclaEquilibrada mezclaE;
+    private sumaView sview;
 }
