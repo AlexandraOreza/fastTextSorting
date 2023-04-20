@@ -4,9 +4,9 @@
  */
 package main;
 
-import logic.MezclaEquilibrada;
+import logic.*;
 import java.io.*;
-import main.sumaView;
+
 
 /**
  *
@@ -155,14 +155,10 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_ordenamientoBtnMousePressed
 
     private void sumaBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sumaBtnMousePressed
-        //sum = new SumaVect();
+        sum = new SumaVect();
         file = new File("src/resources/F2.txt").getAbsolutePath();
-        sview = new sumaView();
-        sview.getData(file);
-        sview.setVisible(true);
-        //String res = sum.SumaVect(file);
-        
-        //pane.showMessageDialog(this, res);
+        String res = sum.SumaVect(file);
+        pane.showMessageDialog(this, res);
         similitudBtn.setEnabled(true);
     }//GEN-LAST:event_sumaBtnMousePressed
 
@@ -220,5 +216,5 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JOptionPane pane;
     private String file;
     private MezclaEquilibrada mezclaE;
-    private sumaView sview;
+    private SumaVect sum;
 }
