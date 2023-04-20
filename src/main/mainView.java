@@ -48,7 +48,7 @@ public class mainView extends javax.swing.JFrame {
 
         idiomaLbl.setText("Selecciona un idioma:");
 
-        idiomaList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles", "Item 3", "Item 4" }));
+        idiomaList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles", "Italiano", "Frances" }));
         idiomaList.setSelectedIndex(-1);
         idiomaList.setRenderer(new PromptComboBoxRenderer("Default"));
         idiomaList.addItemListener(new java.awt.event.ItemListener() {
@@ -119,13 +119,13 @@ public class mainView extends javax.swing.JFrame {
         idioma = (String) idiomaList.getSelectedItem();
         switch (idioma) {
             case "Español":
-                file = new File("src/resources/dummyFile1.txt").getAbsolutePath();
+                file = new File("src/resources/copyEs.vec").getAbsolutePath();
                 break;
             case "Ingles":
-                file = new File("src/resources/dummyFile2.txt").getAbsolutePath();
+                file = new File("src/resources/copyEn.txt").getAbsolutePath();
                 break;
             case "Italiano":
-                file = new File("src/resources/dummyFile3.txt").getAbsolutePath();
+                file = new File("src/resources/copyIt.txt").getAbsolutePath();
                 break;
             case "French":
                 file = new File("src/resources/dummyFile3.txt").getAbsolutePath();
@@ -139,11 +139,9 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_idiomaListItemStateChanged
 
     private void ordenamientoBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordenamientoBtnMousePressed
-        pane.showMessageDialog(this, "click");
         mezclaE = new MezclaEquilibrada();
         mezclaE.ordenamiento(file);
-        //mezcla = new MezclaN();
-        //mezcla.MezclaNatural(file);
+        pane.showMessageDialog(this, "ordenamiento concluido!");
         sumaBtn.setEnabled(true);
     }//GEN-LAST:event_ordenamientoBtnMousePressed
 
